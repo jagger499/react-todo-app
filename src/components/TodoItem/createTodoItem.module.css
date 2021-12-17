@@ -1,0 +1,18 @@
+.li{
+    color: darkgray;
+    display: flex;
+    align-items: center;
+}
+
+.li .icon:nth-child(1){
+    color: rgb(73, 206, 46);
+    padding: 0.5rem;
+}
+
+.li .icon:nth-child(2){
+    color: rgb(218, 69, 69);
+    padding: 0.5rem;
+}
+.li-check--activate{
+    color: rgb(73, 206, 46);
+}

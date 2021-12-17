@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './createTodoItem.module.css';
 
-const TodoCounter = () =>{
+const TodoCounter = ({ totalToDos, completedToDos}) =>{
     return(
         <>
-            <h2>completados 0 todos de 0</h2>
+            <h2 className={styles.counter}>completados {completedToDos} de {totalToDos}</h2>
         </>
     );
 };

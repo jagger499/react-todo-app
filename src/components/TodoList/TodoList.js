@@ -1,9 +1,10 @@
 import React from "react";
+import styles from './createTodoItem.module.css';
 
 const TodoList = (props) =>{
     return(
         <section>
-            <ul>
+            <ul className={styles.ul}> 
                 {props.children}
             </ul>
         </section>
