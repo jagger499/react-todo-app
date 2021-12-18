@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './createTodoItem.module.css';
-
-const TodoCounter = ({ totalToDos, completedToDos}) =>{
+import { TodoContext } from '../../context/TodoContext';
+const TodoCounter = () =>{
+    const {
+        numberCompletedTodos,
+        totalToDos,
+    } = useContext(TodoContext);
     return(
         <>
-            <h2 className={styles.counter}>completados {completedToDos} de {totalToDos}</h2>
+            <h2 className={styles.counter}>completados {numberCompletedTodos} de {totalToDos}</h2>
         </>
     );
 };
