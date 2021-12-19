@@ -6,14 +6,18 @@ import TodoList from "../TodoList/TodoList";
 import TodoItem from "../TodoItem/TodoItem";
 import CreateTodoItem from "../CreateTodoItem/CreateTodoItem";
 import { TodoContext } from "../../context/TodoContext";
+import Modal from "../modal/modal";
+import TodoForm from "../TodoForm/form";
 
 const AppUi = () =>{
     const {
       error, 
       loading, 
       searchedTodos,
-      completedTodos,
-      deleteTodo 
+      completedToDos,
+      deleteTodo,
+      openModal,
+      setOpenModal,
     } = useContext(TodoContext);
     return(
         <>
@@ -25,15 +29,20 @@ const AppUi = () =>{
             {error && <p>desesperate hubo un error</p>}
             {searchedTodos.map(item => (
               <TodoItem 
-                key={item.key}
+                key={item.text}
                 completed={item.completed} 
                 text={item.text}
-                onComplete={() => completedTodos(item.text)}
+                onComplete={() => completedToDos(item.text)}
                 onDelete={() => deleteTodo(item.text)}
               />
             ))}
           </TodoList>
-        <CreateTodoItem/>
+         {(openModal)?
+          <Modal>
+            <TodoForm/>
+          </Modal>:<></>
+          }
+        <CreateTodoItem openModal={openModal} setOpenModal={setOpenModal}/>
       </>
     )
 }

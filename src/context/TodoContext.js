@@ -11,6 +11,7 @@ const TodoProvider = (props) =>{
         error 
     } = useLocalStorage('TODOS_V1',[]);
     const [search, setSearch] = useState('');
+    const [openModal, setOpenModal] = useState(false);
 
 
     //todos completados en la aplicacion y total de todos
@@ -37,6 +38,16 @@ const TodoProvider = (props) =>{
     newTodos[todoIndex].completed = true;
     saveTodos(newTodos);
     }
+
+    //agregar un nuevo todo obteniendo su texto
+    const addTodo = (text) =>{
+        const newTodos = [...toDos];
+        newTodos.push({
+            completed: false,
+            text: text,
+        })
+        saveTodos(newTodos);
+    }
     
     //filtrar y eliminar el todo por el texto que llega como un parametro
     const deleteTodo = (text) =>{
@@ -51,12 +62,15 @@ const TodoProvider = (props) =>{
             totalToDos,
             deleteTodo,
             completedToDos,
+            addTodo,
             numberCompletedTodos,
             search,
             setSearch,
             searchedTodos,
             loading,
-            error
+            error,
+            openModal,
+            setOpenModal,
         }}>
          {props.children}
         </TodoContext.Provider>

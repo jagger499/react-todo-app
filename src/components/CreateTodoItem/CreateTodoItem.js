@@ -3,15 +3,16 @@ import styles from './createTodoItem.module.css';
 import Icon from '@mdi/react';
 import { mdiCheckboxMarkedCirclePlusOutline } from '@mdi/js';
 
-const CreateTodoItem = () =>{
+const CreateTodoItem = ({ setOpenModal }) =>{
+    const onClickButton = () => {setOpenModal(prevState => !prevState)};
     return(
-    <>
+    <div className={styles['z-index']}>
         <button className={styles.button}>
             <Icon path={mdiCheckboxMarkedCirclePlusOutline} 
                   size={1}
-                  onClick={() => alert('hizo click el vergas')}/>
+                  onClick={onClickButton}/>
         </button>
-    </>
+    </div>
     );
 };
 
