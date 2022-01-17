@@ -10,6 +10,10 @@ import CreateTodoItem from "../CreateTodoItem/CreateTodoItem";
 import Modal from "../modal/modal";
 import TodoForm from "../TodoForm/form";
 
+import TodoError from '../status/Error';
+import TodoLoading from '../status/Loading';
+import EmptyTodos from '../status/Empty';
+
 function App() {
   const {
     error, 
@@ -38,7 +42,29 @@ function App() {
           setSearch={setSearch}
         />
       </TodoHeader>
-      <TodoList>
+      <TodoList 
+        error={error}
+        loading={loading}
+        searchedTodos={searchedTodos}
+        search={search}
+        numberCompletedTodos={numberCompletedTodos}
+        onError={() => <TodoError/>}
+        onLoading={() => <TodoLoading/>}
+        onEmptyTodos={() => <EmptyTodos/>}
+        onEmptySearch={
+          (searchedText) => <p>No hay resultado para {searchedText}</p>
+        }
+        render={item => (
+          <TodoItem 
+            key={item.text}
+            completed={item.completed} 
+            text={item.text}
+            onComplete={() => completedToDos(item.text)}
+            onDelete={() => deleteTodo(item.text)}
+          />
+        )}
+      />
+      { /*<TodoList>
         {loading && <p>cargando</p>}
         {(!loading && !searchedTodos.length) && <p>crea tu primer todo</p>}
         {error && <p>desesperate hubo un error</p>}
@@ -51,7 +77,7 @@ function App() {
             onDelete={() => deleteTodo(item.text)}
           />
         ))}
-      </TodoList>
+        </TodoList>*/ }
      {(openModal)?
       <Modal>
         <TodoForm addTodo={addTodo} 
