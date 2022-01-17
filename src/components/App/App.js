@@ -13,6 +13,7 @@ import TodoForm from "../TodoForm/form";
 import TodoError from '../status/Error';
 import TodoLoading from '../status/Loading';
 import EmptyTodos from '../status/Empty';
+import ChangeAlert from "../changeAlert/changeAlert";
 
 function App() {
   const {
@@ -28,6 +29,7 @@ function App() {
     setSearch ,
     search,
     addTodo,
+    sincronize,
   } = useTodos();
 
   return(
@@ -85,6 +87,9 @@ function App() {
       </Modal>:<></>
       }
     <CreateTodoItem openModal={openModal} setOpenModal={setOpenModal}/>
+    <ChangeAlert 
+      sincronize={sincronize}
+    />
   </>
 )
 }
