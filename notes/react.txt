@@ -1,0 +1,60 @@
+render functions:
+las render functions son funciones que mejoran el uso de nuestros componentes recibiendo una funcion que puede prooveer 
+informacion para mejorar la experiencia de la forma en que se cargan los componentes
+
+render props:
+las render props son props en los que se pasa un componente que puede ser renderizado inclusive con informacion para mejorar
+nuestra forma de componer nuestros componentes de una mejor manera
+
+mejorar las render props y render functions:
+
+
+
+Children // cloneElement
+-------------------------------------------------------------- cloneElement
+
+cloneElement sirve para clonar un elemento por ejemplo si se tiene <TodoSearch/>
+
+- se puede clonar de la siguiente forma cloneElement(<TodoSearch/>, { loading: True }) lo va a clonar con la propiedad loading como true
+- se puede enviar nuevas props usando cloneElement() 
+
+-------------------------------------------------------------- Children
+
+se podria utilizar de la forma Children.toArray(children) se puede tratar a los hijod como un array
+un posible funcionamiento seria
+
+// lo que estoy haciendo es tomar los children pasarlos a un objeto y clonar cada uno de ellos agregandole la prop de loading
+
+Children.toArray(children).map{
+	child => cloneElement(child , { loading }) 
+}
+
+
+
+High order components
+---------------------------------------------------------------------------------------------------------------------------
+conceptos simples:
+- High order functions
+  existen funciones que pueden retornar funciones y ambas van a poder usar parametros
+
+el concepto es el mismo tan solo que esto va a ser un componente que recibe otro componente tan solo que 
+
+========================										========================		------------>			==========================
+=         app          =  ---------------> 	=					HOC					 =   			props					=   componentwidthprops	 =
+========================										========================  	------------>			==========================
+
+// esto se puede usar para distribuir la forma en la que se puede propagar datos a traves de componentes
+
+ejemplo de uso puede ser
+1- crear componente widthUser <widthUser><widthUser/>
+2- crear componente widthTodos	<widthTodos><widthTodos/>
+
+necesito que un componente use la informacion del usuario y de los todos
+
+<widthUser> 
+	<widthTodos>
+		<component>
+	</widthTodos>
+</widthUser>
+
+
