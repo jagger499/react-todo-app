@@ -1,9 +1,8 @@
-import React, { createContext ,useState } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
+import useLocalStorage from "./useLocalStorage";
 
-const TodoContext = createContext();
-
-const TodoProvider = (props) =>{
+const useTodos = () =>{
     //estado de todos buscados y de todos que iteran para hacer la lista
     const { item: toDos ,
         saveTodos,
@@ -57,8 +56,7 @@ const TodoProvider = (props) =>{
     saveTodos(newTodos)
     }
 
-    return(
-        <TodoContext.Provider value={{
+    return({
             totalToDos,
             deleteTodo,
             completedToDos,
@@ -71,10 +69,7 @@ const TodoProvider = (props) =>{
             error,
             openModal,
             setOpenModal,
-        }}>
-         {props.children}
-        </TodoContext.Provider>
-    )
+        })
 }
 
-export { TodoProvider, TodoContext }
+export default useTodos;
