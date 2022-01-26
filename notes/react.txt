@@ -31,7 +31,7 @@ Children.toArray(children).map{
 
 
 
-High order components
+High order components (HOC)
 ---------------------------------------------------------------------------------------------------------------------------
 conceptos simples:
 - High order functions
@@ -49,12 +49,24 @@ ejemplo de uso puede ser
 1- crear componente widthUser <widthUser><widthUser/>
 2- crear componente widthTodos	<widthTodos><widthTodos/>
 
-necesito que un componente use la informacion del usuario y de los todos
+necesito que un componente use la informacion del usuario y de los todos (similar al uso de un context)
 
 <widthUser> 
 	<widthTodos>
-		<component>
+		<component/>
 	</widthTodos>
 </widthUser>
 
+=============================================================================================================================
+ventajas y desventajas de cada cosa
+
+Maquetacion:
+ -	lo mejor para maquetar es usar las render props son mas comodas para la maquetacion
+
+para compartir datos:
+- el mejor patron para compartir datos es usar hooks de react o contextos o codigo como custom hooks
+
+comparar HOCS con custom hooks
+- la diferencia entre los HOCS y los custom hooks es que se pude cambiar el componente al que se le agrega
+	por que retorne la informacion ahorrando un par de lineas de codigo para hacerlo mas legible
 
